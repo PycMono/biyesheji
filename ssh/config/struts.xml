@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 下面这句话是配置后缀 ，访问的后缀名 -->
+	<constant name="struts.action.extension" value="do"></constant>
+	<!-- 允许静态方法访问 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="false" />
+	<!-- 是否使用struts的开发模式。开发模式会有更多的调试信息。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.devMode" value="true" />
+	<package name="User" namespace="/" extends="struts-default">
+		<action name="registUI" class="cn.edu.cdtu.action.UserAction"
+			method="registUI">
+			<result name="msg">/jsps/msg.jsp</result>
+			<result name="regist">/jsps/user/regist1.jsp</result>
+		</action>
+
+		<action name="loginUI" class="cn.edu.cdtu.action.UserAction"
+			method="loginUI">
+			<result name="login">/jsps/user/login1.jsp</result>
+			<result name="index">/jsps/index.jsp</result>
+		</action>
+
+
+		<!--生成验证码 -->
+		<action name="randImage" class="cn.edu.cdtu.action.YanZMAction"
+			method="randomIamge">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 验证码校验，看是否和生成的验证码相等 -->
+		<action name="yanzhengma" class="cn.edu.cdtu.action.UserAction"
+			method="ajaxValidateVerifyCode">
+		</action>
+
+		<!-- 校验用户名是否已被注册 -->
+		<action name="ajaxValidateLoginname" class="cn.edu.cdtu.action.UserAction"
+			method="ajaxValidateLoginname">
+		</action>
+		<!-- 退出功能 -->
+		<action name="quitUser" class="cn.edu.cdtu.action.UserAction"
+			method="quit">
+			<result name="index">/index.jsp</result>
+		</action>
+
+		<!-- 修改密码功能 -->
+		<action name="updatePassword" class="cn.edu.cdtu.action.UserAction"
+			method="updatePassword">
+			<result name="login">/jsps/user/login1.jsp</result>
+			<result name="msg">/jsps/msg.jsp</result>
+			<result name="pwd">/jsps/user/pwd.jsp</result>
+		</action>
+
+
+
+
+	</package>
+
+
+	<!-- 管理员登录 -->
+	<package name="Admin" namespace="/" extends="struts-default">
+		<action name="Admin" class="cn.edu.cdtu.action.AdminAction"
+			method="adminUI">
+			<result name="login">/adminjsps/login.jsp</result>
+			<result name="index">/adminjsps/admin/index.jsp</result>
+		</action>
+		<!-- 管理员分類管理 -->
+		<action name="findAll" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="findAll">
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+
+		<!-- 添加分類 -->
+		<action name="addParent" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="addParent">
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+		<!-- 添加二級分類，第一步 -->
+		<action name="addChildPre" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="addChildPre">
+			<result name="add2">/adminjsps/admin/category/add2.jsp</result>
+		</action>
+		<!-- 添加二級分類，第二步 -->
+		<action name="addChild" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="addChild">
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+		<!-- 修改一級分類，第一步 -->
+		<action name="editParentPre" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="editParentPre">
+			<result name="edit">/adminjsps/admin/category/edit.jsp</result>
+		</action>
+		<!--修改一級分類第二步 -->
+		<action name="editParent" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="editParent">
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+
+		<!-- 修改二級分類，第一步 -->
+		<action name="editChildPre" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="editChildPre">
+			<result name="edit2">/adminjsps/admin/category/edit2.jsp</result>
+		</action>
+		<!-- 修改二級分類，第二步 -->
+		<action name="editChild" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="editChild">
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+		<!-- 删除一级分类 -->
+		<action name="deleteParent" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="deleteParent">
+			<result name="msg">/adminjsps/msg.jsp</result>
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+		<!-- 删除二级分类 -->
+		<action name="deleteChild" class="cn.edu.cdtu.action.AdminCategoryAction"
+			method="deleteChild">
+			<result name="msg"> /adminjsps/msg.jsp</result>
+			<result name="list">/adminjsps/admin/category/list.jsp</result>
+		</action>
+		<!-- 管理员对分类显示操作 -->
+		<action name="findAlls" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findAlls">
+			<result name="left">/adminjsps/admin/book/left.jsp</result>
+		</action>
+
+		<!-- 下面是管理员对负数的查询 -->
+
+		<!-- 按名称模糊查询图书 -->
+		<action name="findByBname" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByBname">
+			<result name="list">/adminjsps/admin/book/list.jsp</result>
+		</action>
+		<!-- 按出版社查询图书 -->
+		<action name="findByPress" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByPress">
+			<result name="list">/adminjsps/admin/book/list.jsp</result>
+		</action>
+		<!-- 按分类id查询 -->
+		<action name="findByCategory" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByCategory">
+			<result name="list">/adminjsps/admin/book/list.jsp</result>
+		</action>
+		<!--按图书id查询 -->
+		<action name="findByBid" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByBid">
+			<result name="desc">/adminjsps/admin/book/desc.jsp</result>
+		</action>
+		<!-- 按作者查询 -->
+		<action name="findByAuthor" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByAuthor">
+			<result name="list">/adminjsps/admin/book/list.jsp</result>
+		</action>
+		<!-- 高级查询 -->
+
+		<action name="findByCombination" class="cn.edu.cdtu.action.AdminBookAction"
+			method="findByCombination">
+			<result name="list">/adminjsps/admin/book/list.jsp</result>
+		</action>
+		<!--管理员添加图书第一步 -->
+		<action name="addPre" class="cn.edu.cdtu.action.AdminBookAction"
+			method="addPre">
+			<result name="add">/adminjsps/admin/book/add.jsp</result>
+		</action>
+		<!-- 用Ajax异步刷新出二级分类 -->
+		<action name="ajaxFindChildren" class="cn.edu.cdtu.action.AdminBookAction"
+			method="ajaxFindChildren">
+		</action>
+
+		<!-- 管理员添加图书第二步 -->
+		<action name="addBookTwo" class="cn.edu.cdtu.action.AdminAddBookAction"
+			method="addBookTwo">
+			<result name="msg">/adminjsps/msg.jsp</result>
+			<result name="add">/adminjsps/admin/book/add.jsp</result>
+		</action>
+	</package>
+
+
+
+
+
+
+	<!-- 分类的包 -->
+	<package name="Category" namespace="/Category" extends="struts-default">
+		<!-- 查看所有分类 -->
+		<action name="findAllCategory" class="cn.edu.cdtu.action.CategoryAction"
+			method="findAll">
+			<result name="left">/jsps/left.jsp</result>
+		</action>
+	</package>
+
+	<!-- 查询图书 -->
+	<package name="Book" namespace="/Book" extends="struts-default">
+		<!-- 按名称模糊查询图书 -->
+		<action name="findByBname" class="cn.edu.cdtu.action.BookAction"
+			method="findByBname">
+			<result name="list">/jsps/book/list.jsp</result>
+		</action>
+		<!-- 按出版社查询图书 -->
+		<action name="findByPress" class="cn.edu.cdtu.action.BookAction"
+			method="findByPress">
+			<result name="list">/jsps/book/list.jsp</result>
+		</action>
+		<!-- 按分类id查询 -->
+		<action name="findByCategory" class="cn.edu.cdtu.action.BookAction"
+			method="findByCategory">
+			<result name="list">/jsps/book/list.jsp</result>
+		</action>
+		<!--按图书id查询 -->
+		<action name="findByBid" class="cn.edu.cdtu.action.BookAction"
+			method="findByBid">
+			<result name="desc">/jsps/book/desc.jsp</result>
+		</action>
+		<!-- 按作者查询 -->
+		<action name="findByAuthor" class="cn.edu.cdtu.action.BookAction"
+			method="findByAuthor">
+			<result name="list">/jsps/book/list.jsp</result>
+		</action>
+		<!-- 高级查询 -->
+
+		<action name="findByCombination" class="cn.edu.cdtu.action.BookAction"
+			method="findByCombination">
+			<result name="list">/jsps/book/list.jsp</result>
+		</action>
+	</package>
+
+	<!-- 购物车模块 -->
+	<package name="CartItem" namespace="/CartItem" extends="struts-default">
+		<!-- 查询我的购物车 -->
+		<action name="myCart" class="cn.edu.cdtu.action.CartItemAction"
+			method="myCart">
+			<result name="list">/jsps/cart/list.jsp</result>
+		</action>
+		<!-- 添加购物车 -->
+		<action name="add" class="cn.edu.cdtu.action.CartItemAction"
+			method="add">
+			<result name="list">/jsps/cart/list.jsp</result>
+		</action>
+		<!-- 点击list(购物车界面的加减图片时异步刷新书的数量和小计) -->
+		<action name="updateQuantity" class="cn.edu.cdtu.action.CartItemAction"
+			method="updateQuantity">
+		</action>
+		<!-- 删除购物车条目 -->
+		<action name="deleteCart" class="cn.edu.cdtu.action.CartItemAction"
+			method="deleteCart">
+			<result name="list">/jsps/cart/list.jsp</result>
+		</action>
+		<!-- 加载多个cartitem -->
+		<action name="loadCartItems" class="cn.edu.cdtu.action.CartItemAction"
+			method="loadCartItems">
+			<result name="showitem">/jsps/cart/showitem.jsp</result>
+		</action>
+	</package>
+
+
+	<!-- 订单模块 -->
+	<package name="Order" namespace="/Order" extends="struts-default">
+		<!-- 我的订单 -->
+		<action name="myOrders" class="cn.edu.cdtu.action.OrderAction"
+			method="myOrders">
+			<result name="list">/jsps/order/list.jsp</result>
+		</action>
+		<!-- 加载订单详细信息 -->
+		<action name="load" class="cn.edu.cdtu.action.OrderAction"
+			method="load">
+			<result name="desc">/jsps/order/desc.jsp</result>
+		</action>
+		<!-- 取消订单 -->
+		<action name="cancel" class="cn.edu.cdtu.action.OrderAction"
+			method="cancel">
+			<result name="msg">/jsps/msg.jsp</result>
+			<result name="msg">/jsps/msg.jsp</result>
+		</action>
+		<!--确认收货  -->
+		<action name="confirm" class="cn.edu.cdtu.action.OrderAction"
+			method="confirm">
+			<result name="msg">/jsps/msg.jsp</result>
+			<result name="msg">/jsps/msg.jsp</result>
+		</action>
+		<!-- 支付第一步  -->
+		<action name="paymentPre" class="cn.edu.cdtu.action.OrderAction"
+			method="paymentPre">
+			<result name="pay">/jsps/order/pay.jsp</result>
+		</action>
+		<!-- 生成订单  -->
+		<action name="createOrder" class="cn.edu.cdtu.action.OrderAction"
+			method="createOrder">
+			<result name="msg">/jsps/msg.jsp</result>
+			<result name="ordersucc">/jsps/order/ordersucc.jsp</result>
+		</action>
+	</package>
+
+
+
+
+</struts>

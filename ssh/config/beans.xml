@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	<context:component-scan base-package="cn.edu.cdtu"/>
+	<!-- 导入资源文件hibernate配置资源-->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<!--配置数据源 --> 
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="driverClass" value="${jdbc.driverClass}"/>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+	</bean> 
+	<!--配置sessionFactory --> 
+	<bean id="sessoinFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+		<!-- mappingDirectoryLocations直接扫描该包下面的所有配置文件 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:cn/edu/cdtu/entity</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- 配置spring声明式事务-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessoinFactory"></property>
+	</bean>
+	<!-- <tx:advice id="txAdvice"
+		transaction-manager="transactionManager"
+		>
+		<tx:attributes>
+			//以get开头的方法为只读
+			<tx:method name="get*" read-only="true"/>
+            <tx:method name="findAll*" propagation="REQUIRED" />
+            <tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config >
+		<aop:pointcut expression="execution(* cn.edu.cdtu.service.*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config> -->
+	<!-- //配置事务切入点 再把事务属性和切入点联系起来
+	
+	 //用注解的方式配置事务管理器 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/> 
+	
+</beans>

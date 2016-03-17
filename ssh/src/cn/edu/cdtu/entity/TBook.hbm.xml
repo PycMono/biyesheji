@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-28 18:26:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="cn.edu.cdtu.entity">
+    <class name="TBook" table="t_book" catalog="db_goods">
+        <id name="bookId" type="string">
+            <column name="book_id" length="100" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="TCategory" class="TCategory" fetch="select">
+            <column name="category_id" length="100" />
+        </many-to-one>
+        <property name="bookName" type="string">
+            <column name="book_name" length="500" />
+        </property>
+        <property name="bookAuthor" type="string">
+            <column name="book_author" length="12" />
+        </property>
+        <property name="bookPrice" type="big_decimal">
+            <column name="book_price" precision="8" />
+        </property>
+        <property name="bookCurrPrice" type="big_decimal">
+            <column name="book_currPrice" precision="8" />
+        </property>
+        <property name="bookDiscount" type="big_decimal">
+            <column name="book_discount" precision="3" />
+        </property>
+        <property name="bookPress" type="string">
+            <column name="book_press" length="100" />
+        </property>
+        <property name="bookPageNum" type="java.lang.Integer">
+            <column name="book_pageNum" />
+        </property>
+        <property name="bookWordNum" type="java.lang.Integer">
+            <column name="book_wordNum" />
+        </property>
+        <property name="bookPrinttime" type="string">
+            <column name="book_printtime" length="15" />
+        </property>
+        <property name="bookPaper" type="string">
+            <column name="book_paper" length="50" />
+        </property>
+        <property name="bookImageB" type="string">
+            <column name="book_image_b" length="100" />
+        </property>
+        <property name="bookImageS" type="string">
+            <column name="book_image_s" length="100" />
+        </property>
+        <property name="bookOrderBy" type="java.lang.Integer">
+            <column name="book_orderBy" />
+        </property>
+        <set name="TOrderitems" table="t_orderitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="book_id" length="100" />
+            </key>
+            <one-to-many class="TOrderitem" />
+        </set>
+        <set name="TCartitems" table="t_cartitem" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="book_id" length="100" />
+            </key>
+            <one-to-many class="TCartitem" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-28 18:26:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="cn.edu.cdtu.entity">
+	<class name="TCategory" table="t_category" catalog="db_goods">
+		<id name="categoryId" type="string">
+			<column name="category_id" length="100" />
+			<generator class="uuid" />
+		</id>
+
+		<property name="categoryName" type="string">
+			<column name="category_name" length="50" />
+		</property>
+
+		<many-to-one name="TCategory" class="TCategory" fetch="select">
+			<column name="t_c_category_id" length="100" />
+		</many-to-one>
+		<property name="categoryDesc" type="string">
+			<column name="category_desc" length="100" />
+		</property>
+		<property name="categoryOrderBy" type="java.lang.Integer">
+			<column name="category_orderBy" />
+		</property>
+		<set name="TBooks" table="t_book" inverse="false" lazy="false"
+			fetch="select">
+			<key>
+				<column name="category_id" length="100" />
+			</key>
+			<one-to-many class="TBook" />
+		</set>
+		<set name="TCategories" table="t_category" inverse="false" lazy="false"
+			fetch="select">
+			<key>
+				<column name="t_c_category_id" length="100" />
+			</key>
+			<one-to-many class="TCategory" />
+		</set>
+	</class>
+</hibernate-mapping>

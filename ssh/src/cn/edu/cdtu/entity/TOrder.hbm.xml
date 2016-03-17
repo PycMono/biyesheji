@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-28 18:26:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="cn.edu.cdtu.entity">
+    <class name="TOrder" table="t_order" catalog="db_goods">
+        <id name="orderId" type="string">
+            <column name="order_id" length="100" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="TUser" class="TUser" fetch="select">
+            <column name="user_id" length="100" />
+        </many-to-one>
+        <property name="orderTime" type="string">
+            <column name="order_time" length="20" />
+        </property>
+        <property name="orderTotal" type="big_decimal">
+            <column name="order_total" precision="10" />
+        </property>
+        <property name="orderStatus" type="java.lang.Integer">
+            <column name="order_status" />
+        </property>
+        <property name="orderAddress" type="string">
+            <column name="order_address" length="100" />
+        </property>
+        <set name="TOrderitems" table="t_orderitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="order_id" length="100" />
+            </key>
+            <one-to-many class="TOrderitem" />
+        </set>
+    </class>
+</hibernate-mapping>

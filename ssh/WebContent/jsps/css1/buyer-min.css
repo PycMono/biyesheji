@@ -1,0 +1,223 @@
+#ch-nav {
+    display:none
+}
+#page {
+    width:1190px
+}
+#content {
+    margin-top:15px;
+    font-family:'\5fae\8f6f\96c5\9ed1','\5b8b\4f53'
+}
+#content .buyer .main {
+    padding:24px 0 160px;
+    background:#eff6ff
+}
+#content .buyer .main h3 {
+    width:978px;
+    height:60px;
+    margin:0 auto;
+    line-height:50px;
+    text-align:center;
+    font-size:30px;
+    font-weight:400;
+    background:url(//img.alicdn.com/tps/i2/TB1Q45pFVXXXXanaXXX94KA4FXX-1190-249.png) 0 -190px no-repeat;
+    color:#fff
+}
+#content .seller .main h3 {
+    padding:25px 0;
+    font-size:24px;
+    text-align:center;
+    color:#676c81
+}
+#content .rolebox {
+    position:relative;
+    width:136px;
+    font-size:14px;
+    line-height:30px;
+    letter-spacing:15px
+}
+#content .rolebox a {
+    text-indent:47px
+}
+#content .rolebox a:hover {
+    text-decoration:none;
+    background:#16a086;
+    color:#fff
+}
+#content .rolebox .role {
+    display:block;
+    height:30px;
+    background:#00b997;
+    color:#fff
+}
+#content .rolebox .arrow {
+    position:absolute;
+    top:13px;
+    right:23px;
+    width:0;
+    height:0;
+    overflow:hidden;
+    border-width:5px;
+    border-style:solid;
+    _border-style:dashed;
+    border-color:#fff transparent transparent;
+    _border-top-style:solid
+}
+#content .rolelist {
+    display:none
+}
+#content .rolelist a {
+    display:block;
+    height:30px;
+    background:#e3fffa;
+    color:#00ba97
+}
+#content .expanded .arrow {
+    top:8px;
+    width:0;
+    height:0;
+    overflow:hidden;
+    border-width:5px;
+    border-style:solid;
+    _border-style:dashed;
+    border-color:transparent transparent #fff;
+    _border-bottom-style:solid
+}
+#content .expanded .rolelist {
+    display:block;
+    position:absolute;
+    top:30px;
+    left:0;
+    width:100%
+}
+#content .intro {
+    height:180px;
+    overflow:hidden;
+    text-align:center;
+    background:url(//img.alicdn.com/tps/i2/TB1Q45pFVXXXXanaXXX94KA4FXX-1190-249.png) no-repeat #497cae;
+    color:#fff
+}
+#content .intro h2 {
+    font-size:46px
+}
+#content .intro h2 img {
+    vertical-align:middle
+}
+#content .intro p {
+    margin-top:5px;
+    padding:0 136px;
+    font-size:16px;
+    line-height:1.5;
+    text-align:left
+}
+#content .buyer h2 {
+    padding-top:20px
+}
+#content .seller h2 {
+    padding-top:30px
+}
+#content .seller p {
+    text-align:center
+}
+#content .seller .num {
+    margin:0 3px;
+    font-weight:700;
+    font-family:tahoma
+}
+#content .contracts .list {
+    margin:55px 0 160px;
+    padding:0 130px
+}
+#content .contracts .list li {
+    margin-bottom:-25px
+}
+#content .contracts .list a {
+    display:inline-block;
+    position:relative;
+    min-height:24px;
+    _height:24px;
+    color:#666
+}
+#content .contracts .list img {
+    vertical-align:middle
+}
+#content .contracts .list .ikon {
+    position:relative
+}
+#content .contracts .list .cnt {
+    position:absolute;
+    bottom:0;
+    width:270px
+}
+#content .contracts .list .name {
+    margin-left:6px;
+    font-size:23px;
+    vertical-align:middle
+}
+#content .contracts .list .desc {
+    display:block;
+    overflow:hidden;
+    margin-top:7px;
+    word-wrap:break-word;
+    font-size:12px;
+    line-height:2
+}
+#content .contracts .left a {
+    width:460px
+}
+#content .contracts .left .cnt {
+    right:-50px
+}
+#content .contracts .right {
+    text-align:right
+}
+#content .contracts .right a {
+    width:390px
+}
+#content .contracts .right .cnt {
+    left:-10px;
+    text-align:left
+}
+#content .contracts .promise .ikon {
+    left:-54px
+}
+#content .contracts .broken .ikon {
+    left:-10px
+}
+#content .contracts .sendtime .ikon {
+    left:35px;
+    bottom:-20px
+}
+#content .contracts .aog .ikon {
+    left:14px;
+    bottom:-20px
+}
+#content .contracts .old2new .cnt {
+    bottom:38px
+}
+#content .contracts .quality .ikon {
+    right:12px
+}
+#content .contracts .quality .cnt {
+    bottom:12px
+}
+#content .contracts .courier .ikon {
+    right:-80px
+}
+#content .contracts .courier .cnt {
+    bottom:22px
+}
+#content .refund {
+    text-align:center
+}
+#content .buyer .refund img {
+    margin-top:86px
+}
+#content .seller .refund {
+    padding-bottom:160px;
+    border:1px solid #eee;
+    border-top:none
+}
+#content .seller .refund img {
+    margin-top:5px
+}

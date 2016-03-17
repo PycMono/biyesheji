@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-28 18:26:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="cn.edu.cdtu.entity">
+    <class name="TAdmin" table="t_admin" catalog="db_goods">
+        <id name="adminId" type="string">
+            <column name="admin_id" length="100" />
+            <generator class="uuid" />
+        </id>
+        <property name="adminName" type="string">
+            <column name="admin_name" length="100" />
+        </property>
+        <property name="adminPassword" type="string">
+            <column name="admin_password" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

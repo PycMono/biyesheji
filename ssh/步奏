@@ -1,0 +1,33 @@
+一：
+(1、)加入jar包
+(2、)配置web.xml文件
+(3、)加入spring配置文件
+二：
+加入hibernate
+1、同时建立持久化类，和其对应的.hbm.xml文件，生成数据表
+2、spring整合hibernate
+整合步奏：
+	(1).加入jar包
+	(2).在类路径下加入hibernate.hbm.xml文件，十七配置hibernate的基本属性
+	(3).建立持久化类，使其对应.hbm.xml文件
+	(4).和spring进行整合
+		i:加入c3p0和MySQL的jar包
+		ii:在spring的配置文件中配置数据源，sessonFactory，声明事物
+		iii:
+	(5).启动项目，会看到生成的数据表
+三：
+	(1)配置spring的事务声明
+	(2)配置hibernate的事务管理器
+	(3)配置事务属性
+	(4)配置事务的切入点，把事务和切入点关联起来
+四：
+加入struts
+	(1、)加入struts jar包
+	(2、)在web.xml中配置struts的filter
+	(3、)整合spring
+		(1、)加入struts和spring的插件jar包
+		(2、)在spring的配置文件中配置action，注意action的scope为prototype（表单例模式）
+		(3、)在struts的配置文件配置action时，class属性应该指向action的IOC中的id
+	(4、)加入struts的配置文件
+	safdssf
+	

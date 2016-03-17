@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-28 18:26:09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="cn.edu.cdtu.entity">
+    <class name="TOrderitem" table="t_orderitem" catalog="db_goods">
+        <id name="orderitemId" type="string">
+            <column name="orderitem_id" length="100" />
+            <generator class="uuid" />
+        </id>
+        <many-to-one name="TBook" class="TBook" fetch="select">
+            <column name="book_id" length="100" />
+        </many-to-one>
+        <many-to-one name="TOrder" class="TOrder" fetch="select">
+            <column name="order_id" length="100" />
+        </many-to-one>
+        <property name="orderitemName" type="string">
+            <column name="orderitem_name" length="500" />
+        </property>
+        <property name="orderitemPrice" type="big_decimal">
+            <column name="orderitem_price" precision="8" />
+        </property>
+        <property name="orderitemSubtotal" type="big_decimal">
+            <column name="orderitem_subtotal" precision="8" />
+        </property>
+        <property name="orderitemImage" type="string">
+            <column name="orderitem_image" length="100" />
+        </property>
+        <property name="orderitemCount" type="java.lang.Integer">
+            <column name="orderitem_count" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebContent/jsps/index.jsp=UTF-8
+encoding//WebContent/jsps/user/login1.jsp=UTF-8
+encoding//src/cn/edu/cdtu/action/UserAction.java=UTF-8
+encoding//src/cn/edu/cdtu/dao/BaseDao.java=UTF-8
+encoding//src/cn/edu/cdtu/entity/PaymentUtil.java=UTF-8
+encoding//src/cn/edu/cdtu/page/PageBean.java=UTF-8
+encoding/<project>=GBK

@@ -1,0 +1,65 @@
+#divMain {
+	margin-left: 240px;
+}
+
+#divTitle {
+	line-height: 30px;
+	width: 880px;
+	height: 30px;
+	border: 1px solid #d0d0d0;
+	background: url(/ssh/images/bg_btns.png) repeat-x 0px -132px;
+}
+
+#spanTitle {
+	margin-left: 40%;
+	font-weight: 900;
+	text-aligin: center;
+}
+
+#divBody {
+	width: 880px;
+	height: 400px;
+	border-left: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;
+	border-right: 1px solid #d0d0d0;
+}
+
+.tdText {
+	width: 300px;
+	text-align: right;
+}
+
+.tdInput {
+	width: 250px;
+}
+
+.tdError {
+	width: 300px;
+}
+
+#tableForm {
+	line-height: 50px;
+}
+
+.inputClass {
+	font-size: 0.95em;
+	color: #777;
+	outline: medium none;
+	margin: 10px 0px;
+	width: 91%;
+	font-family: "Exo 2", sans-serif;
+	border: medium none;
+	box-shadow: 0px 0px 2px #135CC9;
+	padding: 8px;
+}
+
+}
+#imgVerifyCode {
+	width: 100px;
+}
+
+#divVerifyCode {
+	text-align: center;
+	border: 0px solid #e2e2e2;
+}
+
